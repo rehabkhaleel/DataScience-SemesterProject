@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.login-card {
+  font-family: 'Roboto';
+  width: 100%;
+  max-width: 450px;
+  border-radius: 18px !important;
+  height: 480px;
+  background-color: white !important;
+}
+
+.login-input .MuiOutlinedInput-root {
+  background-color: white;
+  border-radius: 80px;
+}
+
+.login-input .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #e5e7eb;
+}
+
+.login-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #d1d5db;
+}
+
+.login-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #818cf8;
+  
+}
+
+.login-button {
+  background-color: #5f51cc !important;
+  padding: 8px !important;
+  border-radius: 80px !important;
+  text-transform: none !important;
+  font-size: 1rem !important;
+  box-shadow: none !important;
+ 
+  width: 50%;
+}
+
+.login-button:hover {
+  background-color: #4f46e5 !important;
+}
+
+/* Override Material-UI default styles */
+.MuiTypography-root {
+  font-family: 'Roboto' !important;
+}
+
+.MuiTextField-root {
+  margin-top: 0 !important;
+}
+

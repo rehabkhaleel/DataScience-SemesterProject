@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-roboto {
+  font-family: 'Roboto';
+}
+
+.backdrop-blur {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+.MuiCard-root {
+  background-color:transparent !important;
+  box-shadow: none !important;
+  border: 1px solid white !important; 
+  border-radius: 2px; 
+}
+
+.MuiButton-root {
+  text-transform: none !important;
+}
+
+.MuiTypography-root {
+  font-family: 'Roboto' !important;
+}
+

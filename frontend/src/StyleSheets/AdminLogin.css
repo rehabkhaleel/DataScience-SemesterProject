@@ -1,0 +1,52 @@
+/* AdminLogin.css */
+.admin-login-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center;     /* Center vertically */
+  min-height: 100vh; /* Ensure full viewport height */
+  background: linear-gradient(to bottom right, #e0eafc, #cfdef3); /* Example gradient */
+  padding: 20px;
+  gap: 20px; /* Spacing between the divs */
+}
+
+.login-form {
+  width: 400px;
+  border-radius: 8px;
+}
+
+.welcome-section {
+  width: 500px; /* Adjust as needed */
+  text-align: center;
+  border-radius: 8px;
+}
+
+.login-button {
+  width: 100%;
+  color: white !important; /* Override MUI default styles */
+}
+
+.input-field{
+    background-color: white;
+    border-radius: 5px;
+}
+
+.font-roboto-mono {
+    font-family: 'Roboto Mono', monospace;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 900px) { /* Example breakpoint */
+    .admin-login-container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        align-items: stretch; /* Stretch to full width */
+    }
+    .login-form, .welcome-section {
+        width: 100%; /* Full width on smaller screens */
+        margin-bottom: 20px; /* Add some spacing */
+    }
+}
