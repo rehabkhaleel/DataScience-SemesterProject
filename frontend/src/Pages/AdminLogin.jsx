@@ -1,74 +1,103 @@
-// AdminLogin.jsx
-import React, { useState } from 'react';
-import '../StyleSheets/AdminLogin.css';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import LockIcon from '@mui/icons-material/Lock';
+import React, { useState } from "react";
+import "../StyleSheets/AdminLogin.css";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import LockIcon from "@mui/icons-material/Lock";
+import loginIcon from "../assets/login-icon.png";
+import {
+  Card,
+  CardContent,
+  Typography,
+  InputAdornment,
+  IconButton,
+} from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const AdminLogin = () => {
-  const [adminId, setAdminId] = useState('');
-  const [password, setPassword] = useState('');
+  const [adminData, setAdminData] = useState({
+    username: "",
+    password: "",
+  });
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleChange = (event) => {
+    setAdminData({ ...adminData, [event.target.name]: event.target.value });
+  };
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle login logic here
-    console.log('Logging in with:', adminId, password);
+    // Handle login logic here using adminData object (e.g., api call)
+    console.log("Logging in with:", adminData);
   };
 
   return (
-    <div className="admin-login-container font-roboto-mono">
-      <div className="login-form bg-blue-500 p-8 rounded-lg shadow-md">
-        <h2 className="text-white text-2xl font-bold mb-4">Admin Login</h2>
-        <p className="text-white mb-4">Welcome back!!</p>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            label="Admin ID"
-            variant="outlined"
-            fullWidth
-            margin="normal"
-            value={adminId}
-            onChange={(e) => setAdminId(e.target.value)}
-            className="input-field"
-            InputProps={{
-              style: { color: 'white' },
-            }}
-            InputLabelProps={{
-              style: { color: 'white' },
-            }}
-          />
-          <TextField
-            label="Password"
-            variant="outlined"
-            type="password"
-            fullWidth
-            margin="normal"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="input-field"
-            InputProps={{
-              style: { color: 'white' },
-            }}
-            InputLabelProps={{
-              style: { color: 'white' },
-            }}
-          />
-          <Button
-            variant="contained"
-            type="submit"
-            className="login-button bg-blue-700 hover:bg-blue-900 mt-4"
-          >
-            Login
-          </Button>
-        </form>
+    <div className="main font-roboto-mono">
+      <div className="login-form-container">
+        <div className="login-form p-8 lg">
+        
+          <h2 className="text-white text-5xl font-bold mb-4">Admin Login</h2>
+          <p className="text-white mb-4">Welcome back!</p>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <Typography variant="subtitle2" className="text-[#ffffff] mb-3">
+                Username
+              </Typography>
+              <TextField
+                fullWidth
+                name="username"
+                placeholder="example@gmail.com"
+                value={adminData.username}
+                onChange={handleChange}
+                variant="outlined"
+                className="login-input"
+              />
+            </div>
+            <div>
+              <Typography variant="subtitle2" className="text-[#ffffff] mb-2">
+                Password
+              </Typography>
+              <TextField
+                fullWidth
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={adminData.password}
+                onChange={handleChange}
+                variant="outlined"
+                className="login-input"
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                        className="text-gray-400"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+            </div>
+            <Button type="submit" variant="contained" fullWidth className="login-button">
+              Login
+            </Button>
+          </form>
+        </div>
       </div>
       <div className="welcome-section bg-white p-8 rounded-lg shadow-md">
+      <br/>
+      <br/>
+      <br/>
         <h2 className="text-2xl font-bold mb-4">Welcome to Telecom Customer Services</h2>
         <div className="image-container">
-          <img
-            src="https://i.ibb.co/6y4t40F/telecom-image.png" // Replace with your image URL
-            alt="Telecom Services"
-            className="max-w-full h-auto"
-          />
+          <img src={loginIcon} alt="Telecom Services" className="max-w-full h-auto" />
         </div>
       </div>
     </div>

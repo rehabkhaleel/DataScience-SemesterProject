@@ -3,6 +3,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.font-roboto-mono {
+  font-family: 'Roboto Mono', monospace;
+}
 
 .login-card {
   font-family: 'Roboto';

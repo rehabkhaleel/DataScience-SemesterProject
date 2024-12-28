@@ -1,52 +1,58 @@
 /* AdminLogin.css */
-.admin-login-container {
+.main{
+  padding:0px;
+  margin:0px;
   display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center;     /* Center vertically */
-  min-height: 100vh; /* Ensure full viewport height */
-  background: linear-gradient(to bottom right, #e0eafc, #cfdef3); /* Example gradient */
-  padding: 20px;
-  gap: 20px; /* Spacing between the divs */
+  background: linear-gradient(to bottom, #3aaae9, #c8dff6);
+  min-height: 100vh;
+
+
+}
+
+.login-form-container {
+  flex: 1; 
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width:700px;
+  color: white !important;
 }
 
 .login-form {
-  width: 400px;
-  border-radius: 8px;
+  width: 500px;
+  background-color: transparent;
 }
 
 .welcome-section {
-  width: 500px; /* Adjust as needed */
+  flex: 1;
+  background-color:white;
+  max-width:45%;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  border-radius: 8px;
 }
 
 .login-button {
   width: 100%;
-  color: white !important; /* Override MUI default styles */
+  color: white !important;
+  background-color: #2184bd !important;
+}
+.login-button:hover{
+  background-color: #09517b !important;
 }
 
-.input-field{
-    background-color: white;
-    border-radius: 5px;
+.input-field {
+  border-radius: 90px;
 }
 
 .font-roboto-mono {
-    font-family: 'Roboto Mono', monospace;
+  font-family: 'Roboto Mono', monospace;
 }
 
 .image-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Responsive adjustments if needed */
-@media (max-width: 900px) { /* Example breakpoint */
-    .admin-login-container {
-        flex-direction: column; /* Stack vertically on smaller screens */
-        align-items: stretch; /* Stretch to full width */
-    }
-    .login-form, .welcome-section {
-        width: 100%; /* Full width on smaller screens */
-        margin-bottom: 20px; /* Add some spacing */
-    }
-}

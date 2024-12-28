@@ -13,7 +13,7 @@ import CustomerLogin from './CustomerLogin';
 
 const TelecomPortal = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-400 to-blue-200 flex items-center justify-center font-roboto">
+    <div className="min-h-screen bg-gradient-to-b from-blue-400 to-blue-200 flex items-center justify-center font-roboto-mono">
       <Container maxWidth="lg" className="text-center py-20">
         <Typography variant="h3" component="h3" className="text-white mb-2">
           Telecom Customer Services

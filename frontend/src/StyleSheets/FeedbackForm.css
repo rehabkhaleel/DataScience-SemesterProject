@@ -7,6 +7,11 @@ body {
   background: linear-gradient(to bottom, #1f66b0 0%, #056EA9 100%);
   color: white;
   min-height: 100vh;
+
+ 
+}
+.font-roboto-mono {
+  font-family: 'Roboto Mono', monospace;
 }
 .main-sect{
   font-size: 28px;
