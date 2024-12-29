@@ -11,6 +11,7 @@ function App() {
   <Route path="/" element={<TelecomPortal />} />
   <Route path="/admin-login" element={<AdminLogin />} />
   <Route path="/customer-login" element={<CustomerLogin />} />
+
   <Route path="*" element={<h1>Page Not Found</h1>} />
 </Routes>
 
