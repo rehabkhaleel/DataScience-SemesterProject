@@ -6,10 +6,10 @@ import {
   CardContent,
   Button,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import "../StyleSheets/TelecomPortal.css";
 import adminIcon from "../assets/admin-icon.png";
 import customerIcon from "../assets/customer-icon.png";
+import { Link } from "react-router-dom";
 
 const TelecomPortal = () => {
   return (
@@ -25,6 +25,7 @@ const TelecomPortal = () => {
         <br />
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Admin Card */}
           <Card className="bg-white/10 backdrop-blur border-white/20">
             <CardContent className="flex flex-col items-center p-8">
               <img src={adminIcon} alt="Admin Icon" />
@@ -35,18 +36,21 @@ const TelecomPortal = () => {
                 Access administration tools and manage the system
               </Typography>
               <br />
+              <Link to="/admin-login" className="w-full no-underline">
               <Button
-                variant="contained"
-                color="primary"
-                className="w-full"
-                component={Link}
-                to="/admin-login"
-              >
-                Enter Admin Portal
-              </Button>
+  variant="contained"
+  color="primary"
+  className="w-full"
+  component={Link}
+  to="/admin-login" // Correct routing path
+>
+  Enter Admin Portal
+</Button>
+              </Link>
             </CardContent>
           </Card>
 
+          {/* Customer Card */}
           <Card className="bg-white/10 backdrop-blur border-white/20">
             <CardContent className="flex flex-col items-center p-8">
               <img src={customerIcon} alt="Customer Icon" />
@@ -57,15 +61,17 @@ const TelecomPortal = () => {
                 Access your account and manage your services
               </Typography>
               <br />
+              <Link to="/customer-login" className="w-full no-underline">
               <Button
-                variant="contained"
-                color="success"
-                className="w-full bg-green-600 hover:bg-green-700"
-                component={Link}
-                to="/customer-login"
-              >
-                Enter Customer Portal
-              </Button>
+  variant="contained"
+  color="success"
+  className="w-full bg-green-600 hover:bg-green-700"
+  component={Link}
+  to="/customer-login" // Correct routing path
+>
+  Enter Customer Portal
+</Button>
+              </Link>
             </CardContent>
           </Card>
         </div>
