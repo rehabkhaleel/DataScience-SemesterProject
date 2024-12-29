@@ -29,11 +29,31 @@ const AdminLogin = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle login logic here using adminData object (e.g., api call)
-    console.log("Logging in with:", adminData);
+    try {
+      const response = await fetch("http://localhost:5000/api/admin_login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(adminData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log("Login successful:", data);
+        // Handle successful login (e.g., redirect to admin dashboard, store admin data)
+      } else {
+        console.error("Login failed:", data.error);
+        // Show error message to user
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
   };
+
 
   return (
     <div className="main font-roboto-mono">
