@@ -1,29 +1,32 @@
 import React from "react";
-import { AppBar, Toolbar, Typography, IconButton, Button, Container } from "@mui/material";
+import { AppBar, Toolbar, Typography, IconButton, Button } from "@mui/material";
 import WifiIcon from "@mui/icons-material/Wifi";
 
 const Navbar = () => {
   return (
-    <AppBar position="static" sx={{ backgroundColor:'#b0dcf6' }}>
+    <AppBar
+      position="fixed"
+      sx={{
+        width: `calc(100% - 240px)`, // Adjust for the drawer width
+        ml: "240px", // Offset the content to the right
+        backgroundColor: "#2184bd",
+        boxShadow: "none",
+        width:'100%',
+      }}
+    >
       <Toolbar>
-        {/* Wifi Icon */}
-        <IconButton edge="start" aria-label="logo" sx={{ mr: 2,color:'1f66b0 !important' }}>
+        <IconButton edge="start" aria-label="logo" sx={{ mr: 2, color: "white" }}>
           <WifiIcon />
         </IconButton>
-
-        {/* Title */}
-        <Typography color="textPrimary" variant="h6" sx={{ flexGrow: 1 ,color:'#1f66b0'}}>
+        <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1 }}>
           Telecom Services
         </Typography>
-
-        {/* Navigation Links */}
-        <Button  variant="text" color="Primary" sx={{ ml: 2,color:'#1f66b0'}}>
+        <Button variant="text" size="medium" sx={{ ml: 2, color: "white" }}>
           Home
         </Button>
-        <Button color="text" sx={{ ml: 2 ,color:'#1f66b0'}}>
+        <Button variant="text" size="medium" sx={{ ml: 2, color: "white" }}>
           Services
         </Button>
-      
       </Toolbar>
     </AppBar>
   );

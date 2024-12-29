@@ -44,6 +44,7 @@
 
 .input-field {
   border-radius: 90px;
+  background-color: white !important;
 }
 
 .font-roboto-mono {
@@ -55,4 +56,3 @@
   justify-content: center;
   align-items: center;
 }
-

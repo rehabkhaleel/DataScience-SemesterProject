@@ -13,6 +13,15 @@ code {
   font-family: 'Roboto', sans-serif;
 
 }
+/* global.css */
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.font-roboto-mono {
+  font-family: 'Roboto Mono', monospace;
+}
+
 
 @layer base {
   :root {

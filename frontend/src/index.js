@@ -1,16 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import TelecomPortal from './Pages/TelecomPortal';
-import CustomerLogin from './Pages/CustomerLogin';
-import AdminLogin from './Pages/AdminLogin';
-import FeedbackForm from './Pages/FeedbackForm';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import FeedbackForm from './Pages/FeedbackForm'
+import reportWebVitals from "./reportWebVitals"; // Ensure the default import
+import MiniDrawer from "./Pages/DashBoard";
+import DashBoard from "./Pages/DashBoard";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
 {/* <TelecomPortal/> */}
-    <AdminLogin/> \
+   <FeedbackForm/>
+   {/* <CustomerLogin/> */}
   </React.StrictMode>
 );
-
