@@ -22,7 +22,7 @@ export default function DashBoard() {
   };
 
   return (
-    <Box sx={{ display: "flex", minHeight: "100vh", flexDirection: "column" }}>
+    <Box className='font-roboto'  sx={{ display: "flex", minHeight: "100vh", flexDirection: "column"}}>
       <CssBaseline />
       <Navbar />
 
@@ -42,6 +42,7 @@ export default function DashBoard() {
               top: "64px",
               height: "calc(100vh - 64px)", // Occupy full height minus navbar
               overflowY: "auto", // Add scroll if content overflows
+              
             },
           }}
           variant="permanent"
@@ -55,7 +56,8 @@ export default function DashBoard() {
               sx={{
                 color: "black",
                 backgroundColor: "white",
-                mb: 2, // Consistent margin bottom
+                mb: 4, // Consistent margin bottom
+                mt:4,
               }}
               startIcon={<SupportAgentIcon />}
               onClick={() => handleButtonClick("complaints")}
@@ -68,12 +70,13 @@ export default function DashBoard() {
               sx={{
                 color: "black",
                 backgroundColor: "white",
-                mb: 2,
+                
+                mb: 4,
               }}
               startIcon={<AssessmentIcon />}
               onClick={() => handleButtonClick("churnPrediction")}
             >
-              Churn Prediction Model
+              Churn Prediction
             </Button>
             <Button
               variant="contained"
