@@ -1,25 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import TelecomPortal from "./Pages/TelecomPortal";
+import CustomerLogin from "./Pages/CustomerLogin";
+import AdminLogin from "./Pages/AdminLogin";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<TelecomPortal />} />
+      <Route path="/customer-login" element={<CustomerLogin />} />
+      <Route path="/admin-login" element={<AdminLogin />} />
+    </Routes>
   );
-}
+};
 
 export default App;
