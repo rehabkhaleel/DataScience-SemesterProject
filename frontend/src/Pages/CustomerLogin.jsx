@@ -42,6 +42,8 @@ const CustomerLogin = () => {
 
       const data = await response.json();
 
+    
+
       if (response.ok) {
         console.log("Login successful:", data);
         // Handle successful login (e.g., redirect to customer dashboard, store customer data)

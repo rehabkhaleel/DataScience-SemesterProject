@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../StyleSheets/FeedbackForm.css";
-import WifiIcon from "@mui/icons-material/Wifi";
-import Navbar from "../Components/Navbar";
+import "../StyleSheets/FeedbackForm.css"; // Ensure the path to your CSS file is correct
+import WifiIcon from "@mui/icons-material/Wifi"; // Ensure Material-UI is installed
+import Navbar from "../Components/Navbar"; // Update path if Navbar is in a different folder
 
 const FeedbackForm = () => {
   const [formData, setFormData] = useState({
@@ -30,16 +30,17 @@ const FeedbackForm = () => {
   return (
     <div>
       <Navbar />
-      {/* Form */}
+      {/* Feedback Form */}
       <form
         onSubmit={handleSubmit}
         className="feedback-form feedback-form-container"
       >
-        {/* Email and Age */}
         <div className="main-sect">
-          <h1> Customer Feedback Form</h1>
+          <h1>Customer Feedback Form</h1>
           <p>Help us improve our services by providing your feedback</p>
         </div>
+
+        {/* Email Field */}
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
@@ -51,6 +52,8 @@ const FeedbackForm = () => {
             required
           />
         </div>
+
+        {/* Age Field */}
         <div className="form-group">
           <label htmlFor="age">Age</label>
           <input
@@ -63,7 +66,7 @@ const FeedbackForm = () => {
           />
         </div>
 
-        {/* Services */}
+        {/* Phone Services */}
         <div className="form-group">
           <label>Phone Services</label>
           <div className="form-radio-group">
@@ -87,8 +90,6 @@ const FeedbackForm = () => {
             </label>
           </div>
         </div>
-
-        {/* Additional services omitted for brevity... */}
 
         {/* Complaints */}
         <div className="form-group">

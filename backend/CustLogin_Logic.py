@@ -3,33 +3,31 @@ from pymongo import MongoClient
 from flask_cors import CORS
 
 app = Flask(__name__)
-
-# Allow requests from the frontend
-CORS(app, resources={r"/*": {"origins": "http://127.0.0.1:3000"}})
+CORS(app)
 
 # MongoDB setup
 client = MongoClient("mongodb://localhost:27017/")
 db = client["telecom_db"]
 customer_login_collection = db["customer_login"]
 
+@app.route('/')
+def home():
+    return jsonify({"message": "Welcome to the Customer Login API!"})
+
 @app.route('/api/login', methods=['POST'])
 def login():
-    # Get JSON data from the request
     data = request.get_json()
-    username = data.get("username")
+    customer_id = data.get("username")  # We're using username field for CustomerID
     password = data.get("password")
 
-    # Validate input
-    if not username or not password:
-        return jsonify({"error": "Username and password are required"}), 400
+    if not customer_id or not password:
+        return jsonify({"error": "Customer ID and password are required"}), 400
 
-    # Fetch customer data from MongoDB
-    customer_user = customer_login_collection.find_one({"CustomerID": username})
+    customer_user = customer_login_collection.find_one({"CustomerID": int(customer_id)})
 
     if not customer_user:
         return jsonify({"error": "Invalid credentials"}), 401
 
-    # Compare the provided password with the one stored in MongoDB
     if password == customer_user["Password"]:
         return jsonify({
             "message": "Login successful",
@@ -38,6 +36,6 @@ def login():
 
     return jsonify({"error": "Invalid credentials"}), 401
 
-
 if __name__ == '__main__':
     app.run(debug=True)
+
