@@ -9,7 +9,7 @@ import {
   IconButton
 } from '@mui/material';
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-import '../StyleSheets/CustomerLogin.css';
+import './CustomerLogin.css';
 
 const CustomerLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -32,15 +32,15 @@ const CustomerLogin = () => {
     e.preventDefault();
 
     if (!formData.username || !formData.password) {
-      setErrorMessage("Username and password are required.");
+      setErrorMessage("Customer ID and password are required.");
       return;
     }
 
-    setIsLoading(true); // Show loading state
-    setErrorMessage(''); // Clear previous error messages
+    setIsLoading(true);
+    setErrorMessage('');
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/", {
+      const response = await fetch("/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,20 +48,21 @@ const CustomerLogin = () => {
         body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
       if (response.ok) {
-        const data = await response.json();
         console.log("Login successful:", data);
         setErrorMessage('');
+        // Handle successful login (e.g., redirect to dashboard)
       } else {
-        const errorData = await response.json();
-        console.error("Login failed:", errorData.error);
-        setErrorMessage(errorData.error);
+        console.error("Login failed:", data.error);
+        setErrorMessage(data.error || "Login failed. Please try again.");
       }
     } catch (error) {
       console.error("Error during login:", error);
       setErrorMessage("Unable to connect to the server. Please try again.");
     } finally {
-      setIsLoading(false); // Hide loading state
+      setIsLoading(false);
     }
   };
 
@@ -89,12 +90,12 @@ const CustomerLogin = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <Typography variant="subtitle2" className="text-[#473d99] mb-2">
-                Username
+                Customer ID
               </Typography>
               <TextField
                 fullWidth
                 name="username"
-                placeholder="example@gmail.com"
+                placeholder="Enter your Customer ID"
                 value={formData.username}
                 onChange={handleChange}
                 variant="outlined"
@@ -148,3 +149,4 @@ const CustomerLogin = () => {
 };
 
 export default CustomerLogin;
+
