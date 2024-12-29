@@ -3,7 +3,6 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-# Enable CORS for the entire app
 CORS(app)
 
 @app.route('/')
