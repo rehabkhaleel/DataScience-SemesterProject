@@ -1,6 +1,5 @@
 from pymongo import MongoClient
 
-# Connect to MongoDB
 client = MongoClient("mongodb://localhost:27017/")
 db = client["telecom_db"]
 
@@ -9,7 +8,6 @@ customers_collection = db["customers"]
 customer_login_collection = db["customer_login"]
 admin_login_collection = db["admin_login"]
 
-# Clear collections if they already exist
 customers_collection.delete_many({})
 customer_login_collection.delete_many({})
 admin_login_collection.delete_many({})
