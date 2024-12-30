@@ -37,15 +37,15 @@ const TelecomPortal = () => {
               </Typography>
               <br />
               <Link to="/admin-login" className="w-full no-underline">
-              <Button
-  variant="contained"
-  color="primary"
-  className="w-full"
-  component={Link}
-  to="/admin-login" // Correct routing path
->
-  Enter Admin Portal
-</Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  className="w-full"
+                  component={Link}
+                  to="/admin-login" // Correct routing path
+                >
+                  Enter Admin Portal
+                </Button>
               </Link>
             </CardContent>
           </Card>
@@ -62,15 +62,15 @@ const TelecomPortal = () => {
               </Typography>
               <br />
               <Link to="/customer-login" className="w-full no-underline">
-              <Button
-  variant="contained"
-  color="success"
-  className="w-full bg-green-600 hover:bg-green-700"
-  component={Link}
-  to="/customer-login" // Correct routing path
->
-  Enter Customer Portal
-</Button>
+                <Button
+                  variant="contained"
+                  color="success"
+                  className="w-full bg-green-600 hover:bg-green-700"
+                  component={Link}
+                  to="/customer-login" // Correct routing path
+                >
+                  Enter Customer Portal
+                </Button>
               </Link>
             </CardContent>
           </Card>
