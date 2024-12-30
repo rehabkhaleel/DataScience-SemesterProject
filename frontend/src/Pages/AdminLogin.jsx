@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
+import loginIcon from "../assets/login-icon.png";
+
 const AdminLogin = () => {
   const [adminData, setAdminData] = useState({
     username: "",
@@ -142,7 +144,8 @@ const AdminLogin = () => {
           Welcome to Telecom Customer Services
         </Typography>
         <div className="image-container">
-          <img src="/placeholder.svg?height=200&width=200" alt="Telecom Services" className="max-w-full h-auto" />
+        
+          <img src={loginIcon} alt="Telecom Services" className="max-w-full h-auto" />
         </div>
       </div>
     </div>
