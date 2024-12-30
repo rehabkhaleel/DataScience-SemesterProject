@@ -10,6 +10,8 @@ import DashBoard from "./Pages/DashBoard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <DashBoard/>
+{/* <TelecomPortal/> */}
+   <FeedbackForm/>
+   {/* <CustomerLogin/> */}
   </React.StrictMode>
 );
