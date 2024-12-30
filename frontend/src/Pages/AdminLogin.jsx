@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "../StyleSheets/LoginPage.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -21,6 +22,8 @@ const AdminLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (event) => {
     setAdminData({ ...adminData, [event.target.name]: event.target.value });
@@ -54,7 +57,8 @@ const AdminLogin = () => {
 
       if (response.ok) {
         console.log("Admin login successful:", data);
-        // Handle successful login (e.g., redirect to admin dashboard, store admin data)
+        // Redirect to the dashboard page after successful login
+        navigate("/dashboard");
       } else {
         console.error("Login failed:", data.error);
         setErrorMessage(data.error || "Login failed. Please try again.");
@@ -144,7 +148,6 @@ const AdminLogin = () => {
           Welcome to Telecom Customer Services
         </Typography>
         <div className="image-container">
-        
           <img src={loginIcon} alt="Telecom Services" className="max-w-full h-auto" />
         </div>
       </div>
@@ -153,4 +156,3 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
-

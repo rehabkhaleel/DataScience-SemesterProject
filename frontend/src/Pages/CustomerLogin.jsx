@@ -2,16 +2,10 @@ import React, { useState } from "react";
 import "../StyleSheets/LoginPage.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import LockIcon from "@mui/icons-material/Lock";
-import loginIcon from "../assets/login-icon.png";
-import {
-  Card,
-  CardContent,
-  Typography,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
+import { Card, Typography, InputAdornment, IconButton } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import loginIcon from "../assets/login-icon.png";
 
 const CustomerLogin = () => {
   const [custData, setCustData] = useState({
@@ -20,6 +14,8 @@ const CustomerLogin = () => {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setCustData({ ...custData, [event.target.name]: event.target.value });
@@ -31,40 +27,48 @@ const CustomerLogin = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMessage("");
+
+    if (!custData.username || !custData.password) {
+      setErrorMessage("Username and password are required.");
+      return;
+    }
+
     try {
       const response = await fetch("http://127.0.0.1:5000/api/login", {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(custData),
       });
 
-
       const data = await response.json();
-
-    
 
       if (response.ok) {
         console.log("Login successful:", data);
-        // Handle successful login (e.g., redirect to customer dashboard, store customer data)
+        navigate("/feedback"); // Redirect to the feedback page
       } else {
         console.error("Login failed:", data.error);
-        // Show error message to user
+        setErrorMessage(data.error || "Login failed. Please try again.");
       }
     } catch (error) {
       console.error("Error during login:", error);
+      setErrorMessage("Unable to connect to the server. Please try again.");
     }
   };
-
 
   return (
     <div className="main font-roboto-mono">
       <div className="login-form-container">
         <div className="login-form p-8 lg">
-        
           <h2 className="text-white text-5xl font-bold mb-4">Customer Login</h2>
           <p className="text-white mb-4">Welcome back!</p>
+          {errorMessage && (
+            <Typography variant="body2" color="error" className="mb-4">
+              {errorMessage}
+            </Typography>
+          )}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <Typography variant="subtitle2" className="text-[#ffffff] mb-3">
@@ -115,9 +119,6 @@ const CustomerLogin = () => {
         </div>
       </div>
       <div className="welcome-section bg-white p-8 rounded-lg shadow-md">
-      <br/>
-      <br/>
-      <br/>
         <h2 className="text-2xl font-bold mb-4">Welcome to Telecom Customer Services</h2>
         <div className="image-container">
           <img src={loginIcon} alt="Telecom Services" className="max-w-full h-auto" />
