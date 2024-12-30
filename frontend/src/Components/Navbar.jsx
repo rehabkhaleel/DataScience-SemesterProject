@@ -7,8 +7,8 @@ const Navbar = () => {
     <AppBar
       position="fixed"
       sx={{
-        width: `calc(100% - 240px)`, // Adjust for the drawer width
-        ml: "240px", // Offset the content to the right
+        width: `calc(100% - 240px)`, 
+        ml: "240px", 
         backgroundColor: "#2184bd",
         boxShadow: "none",
         width:'100%',
