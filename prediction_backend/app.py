@@ -88,15 +88,15 @@ async def make_prediction(df: pd.DataFrame):
 
     try:
         logger.info(f"📊 DataFrame shape: {df.shape}")
-        logger.info(f"📋 Columns: {df.columns.tolist()}")
-        logger.info(f"🔎 First row of data:\n{df.iloc[0].to_dict()}")
-        logger.info(f"Column dtypes before predict:\n{df.dtypes}")
-        logger.info(f"Category values:\n{ {col: df[col].unique().tolist() for col in df.select_dtypes('category')} }")
+        #logger.info(f"📋 Columns: {df.columns.tolist()}")
+        #logger.info(f"🔎 First row of data:\n{df.iloc[0].to_dict()}")
+        #logger.info(f"Column dtypes before predict:\n{df.dtypes}")
+        #logger.info(f"Category values:\n{ {col: df[col].unique().tolist() for col in df.select_dtypes('category')} }")
 
         logger.info("🚀 Calling pipeline.predict...")
         prediction = pipeline.predict(df)
 
-        logger.info("📈 Calling pipeline.predict_proba...")
+        #logger.info("📈 Calling pipeline.predict_proba...")
         churn_prob = await asyncio.to_thread(pipeline.predict_proba, df)
 
         churn_prob = churn_prob[0][1] * 100

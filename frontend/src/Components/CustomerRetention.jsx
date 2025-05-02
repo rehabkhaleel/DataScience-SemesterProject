@@ -67,14 +67,14 @@ const CustomerRetention = () => {
 
     try {
       await emailjs.send(
-        "service_o3ks0kc",
-        "template_dn0zf7r",
+        "Add Serivice Id", //Add service ID here
+        "template ID", //Add template ID here
         {
           email: email,
           issue: issue,
           offer: selectedOffers || "A special offer tailored for you",
         },
-        "JF9drkDTnpVNxA7FT"
+        "public api key" // Add public api key
       );
 
       alert("Offer email sent successfully!");
