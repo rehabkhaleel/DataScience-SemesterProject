@@ -60,21 +60,19 @@ npm install
 
 # Start the React development server
 npm start
----
+```
+
 
 ### Backend (FastAPI - Main)
 
-# Navigate to the backend directory
+```bash
 cd backend
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run the FastAPI application
 uvicorn app:app --reload
-
+```
 ### Prediction Backend (FastAPI + LightGBM)
 
+```
 # Navigate to the prediction backend directory
 cd prediction-backend
 
@@ -83,15 +81,16 @@ pip install -r requirements.txt
 
 # Run the prediction backend
 uvicorn app:app --reload
-
+```
 
 ### MongoDB
 
 Use MongoDB Compass or a local instance to manage your MongoDB database.
 
-Make sure to connect the backend with MongoDB and configure your environment variables for the connection.
-
-MongoDB stores customer complaints, which will be used to make churn predictions.
+- A `database` folder is created inside the `backend` directory.
+- It contains a `connections.py` file where the MongoDB connection string is defined.
+- To set up the database, simply update the connection string in `connections.py` with your own MongoDB URI.
+- Make sure that the column names in your form data match those expected by the database and the prediction model to avoid any errors.
 
 ### Emailing (email.js)
 
