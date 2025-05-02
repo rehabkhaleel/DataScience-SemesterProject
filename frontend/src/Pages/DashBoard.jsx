@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import AssessmentIcon from "@mui/icons-material/Assessment";
 import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-
 import Navbar from "../Components/Navbar";
 import CustomerComplaints from "../Components/CustomerComplaint";
 import ChurnPrediction from "../Components/ChurnPrediction";
@@ -18,14 +17,17 @@ export default function DashBoard() {
   const [selectedComponent, setSelectedComponent] = React.useState(null);
 
   const handleButtonClick = (component) => {
+    console.log(`Button clicked: ${component}`);
     setSelectedComponent(component);
   };
 
+  console.log("Rendering Dashboard...");
+  console.log("Currently selected component:", selectedComponent);
+
   return (
-    <Box className='font-roboto'  sx={{ display: "flex", minHeight: "100vh", flexDirection: "column"}}>
+    <Box className="font-roboto" sx={{ display: "flex", minHeight: "100vh", flexDirection: "column" }}>
       <CssBaseline />
       <Navbar />
-
       <Box sx={{ display: "flex", flexGrow: 1 }}>
         <Drawer
           sx={{
@@ -34,31 +36,23 @@ export default function DashBoard() {
             "& .MuiDrawer-paper": {
               width: drawerWidth,
               boxSizing: "border-box",
-              backgroundImage:
-                "linear-gradient(to bottom, #b8d2e9 30%, #056EA9 100%)",
+              backgroundImage: "linear-gradient(to bottom, #b8d2e9 30%, #056EA9 100%)",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
               color: "white",
               top: "64px",
-              height: "calc(100vh - 64px)", // Occupy full height minus navbar
-              overflowY: "auto", // Add scroll if content overflows
-              
+              height: "calc(100vh - 64px)",
+              overflowY: "auto",
             },
           }}
           variant="permanent"
           anchor="left"
         >
-          {/* Use a Box or div for better styling control */}
-          <Box sx={{ p: 2 }}> {/* Add padding inside the drawer for content */}
+          <Box sx={{ p: 2 }}>
             <Button
               variant="contained"
-              fullWidth // Make buttons take full width of drawer
-              sx={{
-                color: "black",
-                backgroundColor: "white",
-                mb: 4, // Consistent margin bottom
-                mt:4,
-              }}
+              fullWidth
+              sx={{ color: "black", backgroundColor: "white", mb: 4, mt: 4 }}
               startIcon={<SupportAgentIcon />}
               onClick={() => handleButtonClick("complaints")}
             >
@@ -67,12 +61,7 @@ export default function DashBoard() {
             <Button
               variant="contained"
               fullWidth
-              sx={{
-                color: "black",
-                backgroundColor: "white",
-                
-                mb: 4,
-              }}
+              sx={{ color: "black", backgroundColor: "white", mb: 4 }}
               startIcon={<AssessmentIcon />}
               onClick={() => handleButtonClick("churnPrediction")}
             >
@@ -81,10 +70,7 @@ export default function DashBoard() {
             <Button
               variant="contained"
               fullWidth
-              sx={{
-                color: "black",
-                backgroundColor: "white",
-              }}
+              sx={{ color: "black", backgroundColor: "white" }}
               startIcon={<PeopleAltIcon />}
               onClick={() => handleButtonClick("customerRetention")}
             >
@@ -98,17 +84,37 @@ export default function DashBoard() {
           sx={{
             flexGrow: 1,
             bgcolor: "transparent",
-            p: 2, // Reduced padding to 3
-            ml: '30px',
+            p: 2,
             mt: "64px",
-            height: "calc(100vh - 64px)", // Match content height to viewport
-            overflowY: "auto", // Add scroll if content overflows
-
+            height: "calc(100vh - 64px)",
+            overflowY: "auto",
           }}
         >
-          {selectedComponent === "complaints" && <CustomerComplaints />}
-          {selectedComponent === "churnPrediction" && <ChurnPrediction />}
-          {selectedComponent === "customerRetention" && <CustomerRetention />}
+          {!selectedComponent && (
+            <Box sx={{ textAlign: "center", mt: 10, color: "gray" }}>
+              <h2>Welcome to the Dashboard</h2>
+              <p>Select an option from the sidebar to begin.</p>
+            </Box>
+          )}
+
+          {selectedComponent === "complaints" && (
+            <>
+              {console.log("Rendering CustomerComplaints Component")}
+              <CustomerComplaints />
+            </>
+          )}
+          {selectedComponent === "churnPrediction" && (
+            <>
+              {console.log("Rendering ChurnPrediction Component")}
+              <ChurnPrediction />
+            </>
+          )}
+          {selectedComponent === "customerRetention" && (
+            <>
+              {console.log("Rendering CustomerRetention Component")}
+              <CustomerRetention />
+            </>
+          )}
         </Box>
       </Box>
     </Box>

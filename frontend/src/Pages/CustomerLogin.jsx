@@ -35,13 +35,14 @@ const CustomerLogin = () => {
     }
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/login", {
+      const response = await fetch("http://127.0.0.1:8000/customer/login", {  // Change from port 5000 to 8000
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
         body: JSON.stringify(custData),
-      });
+      });      
 
       const data = await response.json();
 
@@ -129,3 +130,4 @@ const CustomerLogin = () => {
 };
 
 export default CustomerLogin;
+

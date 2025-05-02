@@ -45,11 +45,12 @@ const AdminLogin = () => {
     }
 
     try {
-      const response = await fetch("/api/admin_login", {
+      const response = await fetch("http://127.0.0.1:8000/admin/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: 'include',
         body: JSON.stringify(adminData),
       });
 
@@ -57,12 +58,12 @@ const AdminLogin = () => {
 
       if (response.ok) {
         console.log("Admin login successful:", data);
-        // Redirect to the dashboard page after successful login
-        navigate("/dashboard");
+        navigate("/dashboard"); // Redirect to the admin dashboard
       } else {
         console.error("Login failed:", data.error);
-        setErrorMessage(data.error || "Login failed. Please try again.");
+        setErrorMessage(data.detail || "Login failed. Please try again.");
       }
+      
     } catch (error) {
       console.error("Error during login:", error);
       setErrorMessage("Unable to connect to the server. Please try again.");
@@ -156,3 +157,4 @@ const AdminLogin = () => {
 };
 
 export default AdminLogin;
+

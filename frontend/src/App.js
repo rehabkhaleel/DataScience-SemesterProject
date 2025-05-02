@@ -4,7 +4,7 @@ import TelecomPortal from "./Pages/TelecomPortal";
 import CustomerLogin from "./Pages/CustomerLogin";
 import AdminLogin from "./Pages/AdminLogin";
 import FeedbackForm from "./Pages/FeedbackForm"
-import { Dashboard } from "@mui/icons-material";
+import DashBoard from "./Pages/DashBoard";
 import Services from "./Pages/Services"
 
 const NotFound = () => <h1 style={{ textAlign: "center", marginTop: "50px" }}>Page Not Found</h1>;
@@ -17,7 +17,7 @@ function App() {
         <Route path="/admin-login" element={<AdminLogin />} />
         <Route path="/customer-login" element={<CustomerLogin />} />
         <Route path="/services" element ={<Services/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/dashboard" element={<DashBoard/>}/>
         <Route path="/feedback" element={<FeedbackForm/>}/>
         <Route path="*" element={<NotFound />} />
       </Routes>
